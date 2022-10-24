@@ -1,0 +1,13 @@
+= 参考指南
+
+// @formatter:off
+
+== webflux
+
+peacetrue-application-webflux 实现 Spring Boot Webflux 技术栈。
+
+* 实现开发环境(dev)和生产环境(prod)，默认为开发环境
+* 解决开发环境 cors 跨域问题
+* 解决分页参数解析问题
+* 解决日期格式化问题
+* 支持 OpenApi 3 swagger

@@ -1,0 +1,46 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    // Spring Boot Gradle 插件：https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/
+    id "org.springframework.boot" version "${springBootPluginVersion}"
+    id "application"
+}
+
+description "Spring Boot Webflux 应用"
+
+dependencies {
+    implementation platform(SpringBootPlugin.BOM_COORDINATES) //版本管理
+
+    // web 服务
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+
+    // 数据库
+    implementation "org.springframework.boot:spring-boot-starter-data-r2dbc"
+    implementation "dev.miku:r2dbc-mysql"
+    implementation "mysql:mysql-connector-java"
+    implementation "io.r2dbc:r2dbc-h2"
+    implementation "com.h2database:h2"
+    implementation "org.flywaydb:flyway-core"
+    // flyway 操作数据库时依赖 spring-jdbc
+    implementation "org.springframework:spring-jdbc"
+    // 支持 MySQL 8.0 时需要使用。flyway : Unsupported Database: MySQL 8.0 https://github.com/flyway/flyway/issues/2000
+    implementation "org.flywaydb:flyway-mysql"
+
+    // OpenAPI 3 文档支持：https://github.com/springdoc/springdoc-openapi。本地访问：http://localhost:8080/swagger-ui.html
+    implementation "org.springdoc:springdoc-openapi-webflux-ui"
+    // 从 javadoc 读取接口描述：https://springdoc.org/#javadoc-support
+    implementation "org.springdoc:springdoc-openapi-javadoc"
+    implementation "com.github.therapi:therapi-runtime-javadoc"
+    annotationProcessor "com.github.therapi:therapi-runtime-javadoc-scribe"
+
+    // peace
+    implementation "com.github.peacetrue:peacetrue-common"
+    implementation "com.github.peacetrue.spring:peacetrue-spring-web"
+
+    // 测试
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+// 加载自定义内容
+apply "from": "extend.gradle"

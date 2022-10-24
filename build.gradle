@@ -1,0 +1,10 @@
+plugins {
+    id "com.github.peacetrue.gradle.build-convention" version "${peaceGradleVersion}${tailSnapshot}" apply(false)
+}
+
+group "com.github.peacetrue.application"
+version "${peaceApplication}${tailSnapshot}"
+description "应用外壳"
+
+apply plugin: "com.github.peacetrue.gradle.build-convention"
+

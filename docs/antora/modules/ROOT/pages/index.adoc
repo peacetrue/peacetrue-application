@@ -1,0 +1,53 @@
+= 概述
+:app-name: peacetrue-application
+:app-version: 1.0.0
+:github: https://github.com/peacetrue
+:website: https://peacetrue.github.io
+:foresight-repo-id:
+:imagesdir: docs/antora/modules/ROOT/assets/images
+
+image:https://img.shields.io/github/workflow/status/peacetrue/{app-name}/build/master["GitHub Workflow Status",link="https://github.com/peacetrue/{app-name}/actions"]
+image:https://snyk.io/test/github/peacetrue/{app-name}/badge.svg["Snyk",link="https://app.snyk.io/org/peacetrue"]
+// image:https://api-public.service.runforesight.com/api/v1/badge/success?repoId={foresight-repo-id}["Foresight",link="https://foresight.thundra.io/repositories/github/peacetrue/{app-name}/test-runs"]
+// image:https://img.shields.io/codecov/c/github/peacetrue/{app-name}/master["Codecov",link="https://app.codecov.io/gh/peacetrue/{app-name}"]
+
+//@formatter:off
+
+== 简介（What）
+
+{website}/{app-name}/[{app-name}] 是一个 Web 服务应用外壳资源库，
+包括 Spring Boot WebMvc 应用外壳和 Spring Boot WebFlux 应用外壳。
+
+NOTE: 一个应用由应用外壳和应用内核组成。应用外壳本身可以独立运行，但不包含业务内容；应用内核则是指具体的业务内容。
+只有应用外壳和应用内核配合运行，才是一个有效的应用；只有应用外壳则是一个空应用。
+
+== 背景（Why）
+
+我们可以使用 Gradle 创建一个基于 Spring Boot 的空应用（仅含应用外壳）。
+后续修改了与应用外壳相关的内容，改动都保存在了应用中，如何快速复制这部分改动呢？
+可以分版本管理应用外壳，每次改动时先修改受管理的应用外壳，再将其同步到具体项目中。
+
+== 用法（How）
+
+[source%nowrap,bash,subs="attributes"]
+----
+git clone -b {app-version} {github}/{app-name}
+cd {app-name}
+./gradlew peacetrue-application-webflux:bootRun
+----
+
+您可以从 xref:version.adoc[] 处，了解不同版本之间的差异。
+
+== 参与者（Who）
+
+. peace(xiayouxue@hotmail.com)
+
+== 活动（When）
+
+初始提交于 2022-10-20，
+最近提交于 2022-10-24。
+
+== 许可证（License）
+
+https://github.com/peacetrue/{app-name}/blob/master/LICENSE[Apache License 2.0^]
+
