@@ -8,19 +8,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
- * 测试 Spring Boot WebFlux 应用。
+ * 测试 Spring WebMVC 应用。
  *
  * @author peace
  **/
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class PeacetrueWebfluxApplicationTest {
+class PeacetrueWebMvcApplicationTest {
 
     @Autowired
-    private PeacetrueWebFluxApplication peacetrueWebfluxApplication;
+    private PeacetrueWebMvcApplication peacetrueWebmvcApplication;
 
     @Test
     void basic() {
-        Assertions.assertNotNull(peacetrueWebfluxApplication);
+        Assertions.assertNotNull(peacetrueWebmvcApplication);
     }
 }

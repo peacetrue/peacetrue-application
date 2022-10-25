@@ -1,13 +1,106 @@
 = 参考指南
 
+本文介绍 {app-name} 技术上的实现细节，
+目前支持 https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#spring-web[Spring WebMVC^] 和 https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux[Spring WebFlux^] 两种技术栈。
+
 // @formatter:off
+实现一个应用，可以选择不同的技术栈，
+但它们最终的目的是相同的，过程中也会面临类似的问题。
 
-== webflux
+== 环境配置
 
-peacetrue-application-webflux 实现 Spring Boot Webflux 技术栈。
+环境配置基于 Spring Boot 2.4.0 版本的 https://spring.io/blog/2020/08/14/config-file-processing-in-spring-boot-2-4[Group^] 规则：
 
-* 实现开发环境(dev)和生产环境(prod)，默认为开发环境
-* 解决开发环境 cors 跨域问题
-* 解决分页参数解析问题
-* 解决日期格式化问题
-* 支持 OpenApi 3 swagger
+[source%nowrap,yaml]
+----
+spring:
+  profiles:
+    group:
+      default: dev
+      dev: common,log-console,db,db-h2-file
+      prod: common,log-file,db,db-mysql
+----
+
+环境分为开发(dev)和生产(prod)，本地运行默认使用开发环境。
+日志分为控制台日志(log-console)和文件日志(log-file)。
+数据库分为 h2 数据库(db-h2-mem,db-h2-file)和 mysql 数据库(db-mysql)。
+
+WebFlux 不支持 db-h2-mem 模式。
+
+== 数据初始化
+
+数据初始化是使用 https://flywaydb.org/documentation/getstarted/[Flyway^] 实现的，
+可自动创建库表，支持直接启动一个新应用而无需额外操作。
+
+在 WebMVC 应用中，Flyway 可使用应用自身的数据源；WebFlux 中必须配置单独的数据源。
+
+== 数据访问
+
+在 WebMVC 应用中，使用 https://spring.io/projects/spring-data-jpa[JPA^] 实现；
+在 WebFlux 应用中，使用 https://spring.io/projects/spring-data-r2dbc[R2DBC^] 实现。
+
+== Web 服务
+
+在 WebMVC 应用中，使用 Tomcat 实现；
+在 WebFlux 应用中，使用 Netty 实现。
+
+== CORS 跨域
+
+对于前后端分离的应用，本地开发时，
+前端一般使用 Vue 或者 React，服务启动在 3000 端口，后端服务启动在 8080 端口。
+从 http://localhost:3000 访问 http://localhost:8080 存在跨域问题，
+需要配置允许跨域：
+
+[source%nowrap,java]
+----
+@Override
+public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**")
+            .allowedOriginPatterns("*")
+            .allowedMethods("*")
+            .allowedHeaders("*")
+            .allowCredentials(true);
+}
+----
+
+在 WebMVC 应用中，使用 `WebMvcConfigurer` 实现；
+在 WebFlux 应用中，使用 `WebFluxConfigurer` 实现。
+
+== 解析分页参数
+
+在 WebMVC 应用中，分页参数使用 `PageableHandlerMethodArgumentResolver` 解析，
+在 `SpringDataWebConfiguration` 中实现自动配置。
+
+在 WebFlux 应用中，分页参数使用 `ReactivePageableHandlerMethodArgumentResolver` 解析，
+截至 Spring Boot 2.7.0 版本，尚未实现自动配置，需手动添加。
+
+== 日期格式化
+
+日期基于 https://en.wikipedia.org/wiki/ISO_8601[ISO 8601^] 国际标准，
+例如：2011-12-03T10:15:30.859831+01:00[Europe/Paris]，
+所有接口的日期参数都遵循该标准。
+
+WARNING: 不支持常规的日期格式，例如：2011-12-03 10:15:30。
+
+在 WebMVC 应用中，已支持通过配置指定标准日期格式：
+
+[source%nowrap,yaml]
+----
+spring:
+  mvc:
+    format:
+      date-time: iso
+      date: iso
+      time: iso
+----
+
+在 WebFlux 应用中，尚不支持。
+
+对于日期格式固定的场景（即后端只接收标准日期格式），
+前端每次都传入匹配的日期时间值，是能够适用的。
+如果还需要支持解析时间戳或者非标准日期格式，以上配置就无法支持了。
+如遇到此问题需使用 `DateTimeFormat` 注解，
+每个字段都使用注解显得很繁琐，可以自定义日期格式化器。
+
+== 接口文档
+

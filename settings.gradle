@@ -17,4 +17,4 @@ pluginManagement {
 
 rootProject.name = "peacetrue-application"
 include "peacetrue-application-webflux"
-//include "peacetrue-application-webmvc"
+include "peacetrue-application-webmvc"

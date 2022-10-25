@@ -1,0 +1,10 @@
+= 本地
+
+链接到工作目录：
+
+[source%nowrap,bash,subs="attributes"]
+----
+cd $workingDir
+ln -s peacetrue-application/peacetrue-application-webmvc peacetrue-application-webmvc
+ln -s peacetrue-application/peacetrue-application-webflux peacetrue-application-webflux
+----

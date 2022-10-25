@@ -13,7 +13,7 @@ server:
 
 spring:
   application:
-    name: peacetrue-application-webflux
+    name: peacetrue-application-webmvc
   data:
     web:
       pageable:
@@ -21,17 +21,17 @@ spring:
 
 ---
 spring.config.activate.on-profile: date-format
-# 以下配置不支持 WebFlux 技术栈
+
 spring:
   mvc:
     format:
       date-time: iso
       date: iso
       time: iso
-  jackson:
-    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
-    time-zone: Asia/Shanghai
-    locale: zh_CN
+#  jackson:
+#    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+#    time-zone: Asia/Shanghai
+#    locale: zh_CN
 
 ---
 spring.config.activate.on-profile: log-console
@@ -74,25 +74,28 @@ db:
 spring.config.activate.on-profile: db-h2-file
 
 spring:
-  r2dbc:
-    url: r2dbc:h2:file:///./${db.schema};DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE
-  flyway:
+  datasource:
     url: jdbc:h2:file:./${db.schema};DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+
+---
+spring.config.activate.on-profile: db-h2-mem
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:${db.schema};DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE
 
 ---
 spring.config.activate.on-profile: db-mysql
 
 spring:
-  r2dbc:
-    url: r2dbc:mysql://${db.host}:3306/${db.schema}?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  datasource:
+    url: jdbc:mysql://${db.host}:3306/${db.schema}?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: ${db.username}
     password: ${db.password}
-    pool:
-      enabled: true
   flyway:
-    url: jdbc:mysql://${db.host}:3306?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
-    user: ${db.username}
-    password: ${db.password}
+    #    url: jdbc:mysql://${db.host}:3306?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    #    user: ${db.username}
+    #    password: ${db.password}
     schemas: ${db.schema}
     create-schemas: true
     default-schema: ${db.schema}

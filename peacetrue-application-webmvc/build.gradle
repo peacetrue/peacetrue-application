@@ -12,14 +12,12 @@ dependencies {
     implementation platform(SpringBootPlugin.BOM_COORDINATES) //版本管理
 
     // web 服务
-    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
 
     // 数据库
-    implementation "org.springframework.boot:spring-boot-starter-data-r2dbc"
-    implementation "dev.miku:r2dbc-mysql"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "mysql:mysql-connector-java"
-    implementation "io.r2dbc:r2dbc-h2"
     implementation "com.h2database:h2"
     implementation "org.flywaydb:flyway-core"
     // flyway 操作数据库时依赖 spring-jdbc
@@ -28,7 +26,7 @@ dependencies {
     implementation "org.flywaydb:flyway-mysql"
 
     // OpenAPI 3 文档支持：https://github.com/springdoc/springdoc-openapi。本地访问：http://localhost:8080/swagger-ui.html
-    implementation "org.springdoc:springdoc-openapi-webflux-ui"
+    implementation "org.springdoc:springdoc-openapi-ui"
     // 从 javadoc 读取接口描述：https://springdoc.org/#javadoc-support
     implementation "org.springdoc:springdoc-openapi-javadoc"
     implementation "com.github.therapi:therapi-runtime-javadoc"

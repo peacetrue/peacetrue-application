@@ -1,12 +1,9 @@
 package com.github.peacetrue.application;
 
-import com.github.peacetrue.spring.formatter.date.AutomaticDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateTimeFormatter;
-import com.github.peacetrue.spring.formatter.date.AutomaticTimeFormatter;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.web.ReactivePageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.ReactiveSortHandlerMethodArgumentResolver;
@@ -16,21 +13,12 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer;
 
 /**
- * WebFlux 应用。
+ * WebFlux 应用配置。
  *
  * @author peace
- */
-@SpringBootApplication
-public class PeacetrueWebfluxApplication {
-
-    /**
-     * 程序启动入口。
-     *
-     * @param args 应用参数
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(PeacetrueWebfluxApplication.class, args);
-    }
+ **/
+@Configuration(proxyBeanMethods = false)
+public class PeacetrueWebFluxConfiguration {
 
     /**
      * 开发环境允许跨域。
@@ -74,12 +62,10 @@ public class PeacetrueWebfluxApplication {
      * @return 日期格式化器配置
      */
     @Bean
-    public WebFluxConfigurer dateFormatterWebFluxConfigurer() {
+    public WebFluxConfigurer localDateFormatterWebFluxConfigurer() {
         return new WebFluxConfigurer() {
             @Override
             public void addFormatters(FormatterRegistry registry) {
-                registry.addFormatter(new AutomaticDateFormatter());
-                registry.addFormatter(new AutomaticTimeFormatter());
                 registry.addFormatter(new AutomaticLocalDateFormatter());
                 registry.addFormatter(new AutomaticLocalDateTimeFormatter());
             }

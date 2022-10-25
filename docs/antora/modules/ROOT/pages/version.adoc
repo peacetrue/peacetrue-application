@@ -4,5 +4,5 @@
 
 == 1.0.0
 
-实现 Spring Boot Webflux 应用外壳。
+实现 Spring WebMVC 和 Spring WebFlux 应用外壳，支持数据访问功能。
 
