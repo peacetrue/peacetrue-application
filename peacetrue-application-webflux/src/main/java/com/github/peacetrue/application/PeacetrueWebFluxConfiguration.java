@@ -12,6 +12,8 @@ import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer;
 
+import static com.github.peacetrue.time.format.DateTimeFormatterUtils.FLEX_ISO_LOCAL_DATE_TIME;
+
 /**
  * WebFlux 应用配置。
  *
@@ -66,8 +68,8 @@ public class PeacetrueWebFluxConfiguration {
         return new WebFluxConfigurer() {
             @Override
             public void addFormatters(FormatterRegistry registry) {
-                registry.addFormatter(new AutomaticLocalDateFormatter());
-                registry.addFormatter(new AutomaticLocalDateTimeFormatter());
+                registry.addFormatter(new AutomaticLocalDateFormatter(FLEX_ISO_LOCAL_DATE_TIME));
+                registry.addFormatter(new AutomaticLocalDateTimeFormatter(FLEX_ISO_LOCAL_DATE_TIME));
             }
         };
     }

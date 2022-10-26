@@ -8,3 +8,14 @@ cd $workingDir
 ln -s peacetrue-application/peacetrue-application-webmvc peacetrue-application-webmvc
 ln -s peacetrue-application/peacetrue-application-webflux peacetrue-application-webflux
 ----
+
+Spring 版本间的差异：
+
+* Profiles group 特性：Spring Boot 最低版本 2.4.0
+* @Configuration(proxyBeanMethods = false) Spring Framework 5.2
+* @NonNullApi Spring Framework 5.0
+* Spring Boot 2.0.0 YAML java.lang.NoClassDefFoundError: org/springframework/beans/factory/config/YamlProcessor$StrictMapAppenderConstructor
+
+
+
+

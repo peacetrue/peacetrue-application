@@ -1,16 +1,12 @@
-import org.springframework.boot.gradle.plugin.SpringBootPlugin
-
 plugins {
     // Spring Boot Gradle 插件：https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/
-    id "org.springframework.boot" version "${springBootPluginVersion}"
+    id "org.springframework.boot" version "${springBootDependencies}"
     id "application"
 }
 
 description "Spring WebFlux 应用"
 
 dependencies {
-    implementation platform(SpringBootPlugin.BOM_COORDINATES) //版本管理
-
     // web 服务
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
