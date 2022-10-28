@@ -1,7 +1,7 @@
 plugins {
     id "com.github.peacetrue.gradle.build-convention" version "${peaceGradleVersion}${tailSnapshot}" // 帮助模板，根模块时需要
     // Spring Boot Gradle 插件：https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/
-    id "org.springframework.boot" version "${springBootDependencies}"
+    id "org.springframework.boot" version "2.7.0"
     id "application"
 }
 
@@ -40,6 +40,8 @@ dependencies {
 }
 
 // 加载自定义内容
-fileTree("${projectDir}/extend").forEach({
-    apply "from": "extend/$it.name"
-})
+fileTree("${projectDir}/extend")
+        .filter(file -> file.name.endsWith(".gradle"))
+        .forEach({
+            apply "from": "extend/$it.name"
+        })
