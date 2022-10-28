@@ -5,22 +5,24 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
- * 测试 Spring WebMVC 应用。
+ * Spring WebMVC应用测试。
  *
  * @author peace
  **/
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class PeacetrueWebMvcApplicationTest {
+@ActiveProfiles({"dev", "unittest"})
+class PeacetrueApplicationWebmvcApplicationTest {
 
     @Autowired
-    private PeacetrueWebMvcApplication peacetrueWebmvcApplication;
+    private PeacetrueApplicationWebmvcApplication application;
 
     @Test
     void basic() {
-        Assertions.assertNotNull(peacetrueWebmvcApplication);
+        Assertions.assertNotNull(application);
     }
 }

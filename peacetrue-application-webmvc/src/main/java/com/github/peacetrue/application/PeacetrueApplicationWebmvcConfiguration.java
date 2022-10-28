@@ -7,12 +7,12 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * WebMVC 应用配置。
+ * Spring WebMVC应用配置。
  *
  * @author peace
  **/
-@Configuration(proxyBeanMethods = false)
-public class PeacetrueWebMvcConfiguration {
+@Configuration
+public class PeacetrueApplicationWebmvcConfiguration {
 
     /**
      * 开发环境允许跨域。

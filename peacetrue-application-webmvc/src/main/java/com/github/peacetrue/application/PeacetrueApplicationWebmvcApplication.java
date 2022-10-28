@@ -4,12 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * WebMVC 应用。
+ * Spring WebMVC应用。
  *
  * @author peace
  */
 @SpringBootApplication
-public class PeacetrueWebMvcApplication {
+public class PeacetrueApplicationWebmvcApplication {
 
     /**
      * 程序启动入口。
@@ -17,7 +17,7 @@ public class PeacetrueWebMvcApplication {
      * @param args 应用参数
      */
     public static void main(String[] args) {
-        SpringApplication.run(PeacetrueWebMvcApplication.class, args);
+        SpringApplication.run(PeacetrueApplicationWebmvcApplication.class, args);
     }
 
 }

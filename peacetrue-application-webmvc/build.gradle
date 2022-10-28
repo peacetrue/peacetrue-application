@@ -1,10 +1,11 @@
 plugins {
+    id "com.github.peacetrue.gradle.build-convention" version "${peaceGradleVersion}${tailSnapshot}" // 帮助模板，根模块时需要
     // Spring Boot Gradle 插件：https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/
     id "org.springframework.boot" version "${springBootDependencies}"
     id "application"
 }
 
-description "Spring WebFlux 应用"
+description "Spring WebMVC"
 
 dependencies {
     // web 服务
@@ -39,4 +40,6 @@ dependencies {
 }
 
 // 加载自定义内容
-apply "from": "extend.gradle"
+fileTree("${projectDir}/extend").forEach({
+    apply "from": "extend/$it.name"
+})
