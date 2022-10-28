@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo '-------- generate template start -------------'
+
 source="$workingDir/peacetrue-application-webmvc/"
 target="$workingDir/peacetrue-template/peacetrue-template-webmvc/src/main/resources/webmvc/"
 # 变量
@@ -14,13 +16,19 @@ cd "$source" || exit
 rm -rf "${target}*"
 
 # build.gradle
-echo 'handle build.gradle'
 cp build.gradle "${target}build.gradle.vm"
 target_build='group "${repository.group}"\nversion "${esc.d}{${lh.lc(${repository.name})}Version}${esc.d}{tailSnapshot}"\ndescription "${repository.title}"'
 sed -i '' "s|description \"$title\"|$target_build|" "${target}build.gradle.vm"
-
+# extend
+mkdir "${target}extend"
+tee "${target}extend/dependencies.gradle.vm"<<EOF
+dependencies {
+  #foreach(\$dependency in \${repository.dependencies})
+  implementation "\$dependency"
+  #end
+}
+EOF
 # gradle.properties
-echo 'handle gradle.properties'
 tee "$target/gradle.properties.vm" <<EOF
 tailSnapshot=-SNAPSHOT
 peaceGradleVersion=1.1.1
@@ -45,8 +53,10 @@ sed -i '' "s|$class_name|\$lh.uc(\${repository.name})|" "$target_main_configurat
 target_main_resources=$target'src/main/resources/'
 mkdir -p "$target_main_resources"
 cp "src/main/resources/application.yml" "${target_main_resources}application.yml.vm"
+sed -i '' "s|\\$|\${esc.d}|" "${target_main_resources}application.yml.vm"
 sed -i '' "s|${name}|\${repository.name}|" "${target_main_resources}application.yml.vm"
 cp "src/main/resources/log4jdbc.properties" "${target_main_resources}log4jdbc.properties"
+
 
 target_test_java=$target'src/test/java/${clazz.path(${repository.group})}/'
 mkdir -p "$target_test_java"
@@ -58,3 +68,7 @@ sed -i '' "s|$class_name|\$lh.uc(\${repository.name})|" "$target_test_applicatio
 mkdir -p "${target}src/test/resources"
 cp "src/test/resources/application-unittest.yml" "${target}src/test/resources/application-unittest.yml"
 
+# 空目录添加占位文件
+find "${target}" -type d -empty | xargs -I '{}' touch "{}/.gitkeep"
+
+echo '-------- generate template over -------------'
