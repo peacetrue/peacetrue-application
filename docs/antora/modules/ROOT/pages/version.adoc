@@ -4,6 +4,8 @@
 
 == 1.0.0
 
-实现 Spring WebMVC 和 Spring WebFlux 应用外壳，支持数据访问功能。
-
-实现 React Admin 应用外壳。
+后端::
+实现 Spring WebMVC 和 Spring WebFlux 应用外壳，
+支持环境变量、数据访问等基础功能。
+前端::
+实现 React Admin 应用外壳，支持模拟数据、配置模块及依赖。

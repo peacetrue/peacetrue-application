@@ -1,6 +1,6 @@
 {
-  "short_name": "peacetrue-application-react-admin",
-  "name": "React Admin 应用",
+  "short_name": "peacetrue-application-reactadmin",
+  "name": "React Admin",
   "icons": [
     {
       "src": "favicon.ico",

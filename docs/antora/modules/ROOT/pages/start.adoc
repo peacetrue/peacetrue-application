@@ -5,10 +5,12 @@
 # 克隆指定版本的资源库
 git clone -b {app-version} {github}/{app-name}
 cd {app-name} || exit
+# 运行后端 WebFlux
 ./gradlew peacetrue-application-webflux:bootRun
+# 运行后端 WebMVC
 ./gradlew peacetrue-application-webmvc:bootRun
-
-cd peacetrue-application-react-admin || exit
+# 运行前端 React Admin
+cd peacetrue-application-reactadmin || exit
 pnpm install
 pnpm start
 ----

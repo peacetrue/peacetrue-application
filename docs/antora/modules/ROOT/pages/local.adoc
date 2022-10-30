@@ -7,7 +7,7 @@
 cd $workingDir
 ln -s peacetrue-application/peacetrue-application-webmvc peacetrue-application-webmvc
 ln -s peacetrue-application/peacetrue-application-webflux peacetrue-application-webflux
-ln -s peacetrue-application/peacetrue-application-react-admin peacetrue-application-react-admin
+ln -s peacetrue-application/peacetrue-application-reactadmin peacetrue-application-reactadmin
 ----
 
 Spring 版本间的差异：

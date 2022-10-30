@@ -1,5 +1,7 @@
 * xref:index.adoc[]
-// * xref:start.adoc[]
+* xref:start.adoc[]
 // * xref:manual.adoc[]
-* xref:reference.adoc[]
+* 参考指南
+** xref:reference/backend.adoc[]
+** xref:reference/frontend.adoc[]
 * xref:version.adoc[]

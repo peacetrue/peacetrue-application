@@ -1,0 +1,12 @@
+= 前端
+
+* https://github.com/marmelab/react-admin[React Admin GitHub^]
+* https://marmelab.com/react-admin/documentation.html[React Admin Documentation^]
+
+实现过程：
+
+. 创建一个 React Admin TypeScript 应用
+. 实现 Spring Data Provider
+. 完善 i18n 支持
+. 支持模块扩展
+

@@ -15,13 +15,13 @@ image:https://img.shields.io/codecov/c/github/peacetrue/{app-name}/master["Codec
 
 == 简介（What）
 
-{website}/{app-name}/[{app-name}] 是一个 xref:overview::reuse-platform.adoc[应用外壳] 资源库，
-包括 Spring WebMVC 应用外壳和 Spring WebFlux 应用外壳。
+{website}/{app-name}/[{app-name}] 是一个 xref:overview::application.adoc#_应用外壳[应用外壳] 资源库，
+包括 Spring WebMVC、Spring WebFlux 和 React Admin 应用外壳。
 
 == 背景（Why）
 
 我们可以使用 Maven 或者 Gradle 构建一个基于 Spring Boot 的项目，初始仅含应用外壳。
-后续修改了与应用外壳相关的内容，改动都保存在了项目中，如何快速复制这部分改动呢？
+后续修改了与应用外壳相关的内容，改动都保存在了当前项目中，如何快速复制这部分改动呢？
 可以分版本管理应用外壳，每次改动时先修改受管理的应用外壳，再将其同步到具体项目中。
 
 == 用法（How）
@@ -29,13 +29,12 @@ image:https://img.shields.io/codecov/c/github/peacetrue/{app-name}/master["Codec
 [source%nowrap,bash,subs="specialchars,attributes"]
 ----
 # 运行 Spring Boot WebMVC 应用
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/peacetrue/peacetrue-application/1.0.0/run-webflux.sh)"
-# 运行 Spring Boot WebFlux 应用
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/peacetrue/peacetrue-application/1.0.0/run-webmvc.sh)"
+# 运行 Spring Boot WebFlux 应用
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/peacetrue/peacetrue-application/1.0.0/run-webflux.sh)"
 # 运行 React Admin 应用
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/peacetrue/peacetrue-application/1.0.0/run-react-admin.sh)"
 ----
-
 
 == 参与者（Who）
 
@@ -43,8 +42,7 @@ image:https://img.shields.io/codecov/c/github/peacetrue/{app-name}/master["Codec
 
 == 活动（When）
 
-初始提交于 2022-10-20，
-最近提交于 2022-10-24。
+初始提交于 2022-10-20，最近提交于 2022-10-29。
 
 == 许可证（License）
 

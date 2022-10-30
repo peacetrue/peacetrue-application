@@ -1,4 +1,4 @@
-= 参考指南
+= 后端
 
 本文介绍 {app-name} 技术上的实现细节，
 目前支持 https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#spring-web[Spring WebMVC^] 和 https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux[Spring WebFlux^] 两种技术栈。
