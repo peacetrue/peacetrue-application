@@ -1,6 +1,6 @@
 plugins {
     // Spring Boot Gradle 插件：https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/
-    id "org.springframework.boot" version "${springBootDependencies}"
+    id "org.springframework.boot" version "${springBootDependenciesVersion}"
     id "application"
 }
 

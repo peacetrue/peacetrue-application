@@ -1,0 +1,6 @@
+#spring.config.activate.on-profile: db-h2-mem
+
+spring:
+  datasource:
+    driver-class-name: ${db.driver:org.h2.Driver}
+    url: ${db.log4jdbc}jdbc:h2:mem:${db.schema};DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE

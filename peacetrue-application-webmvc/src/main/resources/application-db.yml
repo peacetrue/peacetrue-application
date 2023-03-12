@@ -1,0 +1,9 @@
+#spring.config.activate.on-profile: db
+
+db:
+  # 这里就是空字符串
+  log4jdbc:
+  host: localhost
+  schema: ${spring.application.name}
+  username: root
+  password: 1qw2!QW@

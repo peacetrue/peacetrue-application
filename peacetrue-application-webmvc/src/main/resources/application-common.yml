@@ -1,0 +1,24 @@
+#spring.config.activate.on-profile: common
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: peacetrue-application-webmvc
+  data:
+    web:
+      pageable:
+        max-page-size: 2000
+  jpa:
+    # WARN 78842 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    open-in-view: false
+  mvc:
+    format:
+      date-time: iso
+      date: iso
+      time: iso
+#  jackson:
+#    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+#    time-zone: Asia/Shanghai
+#    locale: zh_CN
