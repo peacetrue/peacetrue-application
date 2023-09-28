@@ -3,6 +3,7 @@
 logging:
   level:
     root: warn
+    io.netty: warn
 # IEDA 中，java 命令执行在项目（不是模块）下
 # path 和 file 冲突，设置 file 则 path 无效
 #logging.path = backend

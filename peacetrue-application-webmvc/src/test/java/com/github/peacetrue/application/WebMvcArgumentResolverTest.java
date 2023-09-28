@@ -45,7 +45,7 @@ import java.time.temporal.ChronoUnit;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @Slf4j
-@ActiveProfiles({"test", "date-format"})
+@ActiveProfiles({"dev", "unittest"})
 class WebMvcArgumentResolverTest {
 
     @Autowired

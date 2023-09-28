@@ -1,6 +1,0 @@
-logging:
-  level:
-    root: info
-#    org.springframework: trace
-#    org.springframework.web: trace
-    com.github.peacetrue: trace

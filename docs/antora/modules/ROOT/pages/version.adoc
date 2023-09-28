@@ -9,3 +9,10 @@
 支持环境变量、数据访问等基础功能。
 前端::
 实现 React Admin 应用外壳，支持模拟数据、配置模块及依赖。
+
+== 1.1.0
+
+* 更新 GitHub 测试 Action 为 Testspace
+* README 文件改为"详情参考链接"，避免两方同步
+* 添加 playbook.yml 支持本地构建文档
+* 拆分 peacetrue-application-webflux 的配置文件

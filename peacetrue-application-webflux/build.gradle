@@ -30,6 +30,9 @@ dependencies {
     implementation "com.github.therapi:therapi-runtime-javadoc"
     annotationProcessor "com.github.therapi:therapi-runtime-javadoc-scribe"
 
+    // Micrometer Prometheus registry
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
     // peace
     implementation "com.github.peacetrue:peacetrue-common"
     implementation "com.github.peacetrue.spring:peacetrue-spring-web"

@@ -1,0 +1,14 @@
+#spring.config.activate.on-profile: common
+
+server:
+  port: 8080
+
+spring:
+  data:
+    web:
+      pageable:
+        max-page-size: 2000
+#  jackson:
+#    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+#    time-zone: Asia/Shanghai
+#    locale: zh_CN

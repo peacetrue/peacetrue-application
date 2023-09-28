@@ -1,0 +1,10 @@
+# https://docs.spring.io/spring-boot/docs/2.7.0/reference/html/actuator.html#actuator.endpoints.enabling
+# 默认情况下，除 shutdown 之外的所有端点均已启用
+# 默认为 true，设置成 false 后，/actuator/prometheus 404
+# management.endpoint.prometheus.enabled: true
+# 默认为 true，设置成 false 后，/actuator/prometheus 404
+# management.metrics.export.prometheus.enabled: false
+# 默认为 health，不添加 prometheus，/actuator/prometheus 404
+# 不明白了，为什么搞这么多层开关
+management.endpoints.web.exposure.include: health,prometheus
+server.tomcat.mbeanregistry.enabled: true

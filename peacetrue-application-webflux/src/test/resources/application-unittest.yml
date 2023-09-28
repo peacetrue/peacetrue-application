@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: info
+    org.springframework: debug
+    org.springframework.web: trace
+    org.springframework.validation.beanvalidation: info
+    com.github.peacetrue: trace

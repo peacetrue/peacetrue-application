@@ -4,8 +4,6 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: peacetrue-application-webmvc
   data:
     web:
       pageable:

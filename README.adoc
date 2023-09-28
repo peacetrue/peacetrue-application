@@ -1,1 +1,1 @@
-docs/antora/modules/ROOT/pages/index.adoc
+详情参考 https://peacetrue.github.io/peacetrue-application/[知识库^]

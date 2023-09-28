@@ -2,7 +2,8 @@ spring:
   profiles:
     group:
       default: dev
-      dev: common,log-console,db,db-h2-file,log4jdbc
-      prod: common,log-file,db,db-mysql
-
-
+      dev: common,log-console,db,db-h2-file,log4jdbc,prometheus
+      local: common,log-file,db,db-h2-file,prometheus
+      prod: common,log-file,db,db-mysql,prometheus
+  application:
+    name: peacetrue-application-webmvc

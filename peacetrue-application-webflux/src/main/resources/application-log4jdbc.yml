@@ -1,0 +1,10 @@
+#spring.config.activate.on-profile: log4jdbc
+db:
+  driver: net.sf.log4jdbc.DriverSpy
+  log4jdbc: jdbc:log4
+
+logging:
+  level:
+    # log4jdbc 配置
+    jdbc: off
+    jdbc.sqlonly: info

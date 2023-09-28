@@ -40,7 +40,7 @@ import java.util.Objects;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @Slf4j
-@ActiveProfiles({"test", "date-format"})
+@ActiveProfiles("unittest")
 class WebFluxArgumentResolverTest {
 
     @Autowired

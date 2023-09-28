@@ -1,0 +1,16 @@
+#spring.config.activate.on-profile: db-mysql
+
+spring:
+  r2dbc:
+    url: r2dbc:mysql://${db.host}:3306/${db.schema}?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${db.username}
+    password: ${db.password}
+    pool:
+      enabled: true
+  flyway:
+    url: jdbc:mysql://${db.host}:3306?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    user: ${db.username}
+    password: ${db.password}
+    schemas: ${db.schema}
+    create-schemas: true
+    default-schema: ${db.schema}
