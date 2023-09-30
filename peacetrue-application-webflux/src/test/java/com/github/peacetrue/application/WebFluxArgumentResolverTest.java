@@ -85,7 +85,7 @@ class WebFluxArgumentResolverTest {
     @Test
     void localDateTime() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        String now = localDateTime.toString();
+        String now = localDateTime.toString().split("\\.")[0];// 去掉秒后面的部分
         log.info("now: {}", now);
 
         webClient.get()

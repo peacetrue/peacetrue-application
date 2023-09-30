@@ -32,7 +32,7 @@ include::partial$shields.adoc[]
 
 == 活动（When）
 
-初始提交于 2022-10-20，最近提交于 2022-10-29。
+初始提交于 2022-10-20，最近提交于 {localdate}。
 
 == 许可证（License）
 
