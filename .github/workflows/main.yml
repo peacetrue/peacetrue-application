@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     # https://github.com/actions/setup-java#testing-against-different-java-versions
     strategy:
       matrix:
